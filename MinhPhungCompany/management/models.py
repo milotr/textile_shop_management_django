@@ -11,7 +11,7 @@ class Customer(models.Model):
     socialnumber = models.IntegerField(null = True)
 
     def __str__(self):
-        return f'{self.lastname}{self.middlename}{self.firstname}'
+        return f'{self.lastname} {self.middlename} {self.firstname}'
 
 class Product(models.Model):
     product_id = models.BigAutoField(primary_key=True)
@@ -27,3 +27,6 @@ class Order(models.Model):
     order_id = models.BigAutoField(primary_key=True)
     customer_id = models.ForeignKey(Customer, null=True, on_delete = models.SET_NULL)
     product_id = models.ForeignKey(Product, null=True, on_delete = models.SET_NULL)
+
+    def __str__(self):
+        return f'{self.Color}-{self.length}'
