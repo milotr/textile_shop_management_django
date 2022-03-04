@@ -7,7 +7,7 @@ class Customer(models.Model):
     lastname = models.CharField(max_length=64)
     middlename = models.CharField(max_length=64, null = True)
     firstname = models.CharField(max_length=64)
-    phone = models.IntegerField(null = True)
+    phone = models.CharField(max_length=64,null = True)
     socialnumber = models.IntegerField(null = True)
     customer_date = models.DateTimeField(auto_now_add = True, null = True)
 
