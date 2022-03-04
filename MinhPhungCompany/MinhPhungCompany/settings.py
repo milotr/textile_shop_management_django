@@ -119,6 +119,7 @@ import os
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
+    # "C:/Users/Long Tran/Documents/GitHub/Management_Website/MinhPhungCompany/static"
 ]
 
 # Default primary key field type

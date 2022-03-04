@@ -9,9 +9,10 @@ class Customer(models.Model):
     firstname = models.CharField(max_length=64)
     phone = models.IntegerField(null = True)
     socialnumber = models.IntegerField(null = True)
+    customer_date = models.DateTimeField(auto_now_add = True, null = True)
 
     def __str__(self):
-        return f'{self.lastname}{self.middlename}{self.firstname}'
+        return f'{self.lastname} {self.middlename} {self.firstname}'
 
 class Product(models.Model):
     product_id = models.BigAutoField(primary_key=True)
@@ -19,11 +20,16 @@ class Product(models.Model):
     hexcolor = models.CharField(max_length=64)
     type = models.CharField(max_length=64)
     location = models.CharField(max_length=64, null = True)
+    product_date = models.DateTimeField(auto_now_add = True, null = True)
 
     def __str__(self):
-        return f'{self.Color}-{self.length}'
+        return f'{self.color}-{self.hexcolor}'
 
 class Order(models.Model):
     order_id = models.BigAutoField(primary_key=True)
     customer_id = models.ForeignKey(Customer, null=True, on_delete = models.SET_NULL)
     product_id = models.ForeignKey(Product, null=True, on_delete = models.SET_NULL)
+    order_date = models.DateTimeField(auto_now_add=True, null = True)
+
+    def __str__(self):
+        return f'{self.order_id}-{self.customer_id}-{self.product_id}'

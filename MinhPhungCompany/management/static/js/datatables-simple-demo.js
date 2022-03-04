@@ -7,3 +7,10 @@ window.addEventListener('DOMContentLoaded', event => {
         new simpleDatatables.DataTable(datatablesSimple);
     }
 });
+
+// window.addEventListener('DOMContentLoaded', event => {
+//     const datatablesProduct = document.getElementById('datatablesProduct');
+//     if (datatablesProduct) {
+//         new simpleDatatables.DataTable(datatablesProduct);
+//     }
+// });
