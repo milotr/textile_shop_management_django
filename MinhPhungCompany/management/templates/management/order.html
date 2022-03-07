@@ -42,41 +42,35 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên khách hàng</th>
                                             <th>Tên màu</th>
-                                            <th>Màu</th>
-                                            <th>Mã Hex</th>
-                                            <th>Chiều dài</th>
+                                            <!-- <th>Màu</th>
+                                            <th>Mã hex</th>
                                             <th>Loại</th>
-                                            <th>Địa điểm</th>
-                                            <th>Ngày được thêm vào</th>
-                                            <th>Update</th>
+                                            <th>Update</th> -->
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên khách hàng</th>
                                             <th>Tên màu</th>
-                                            <th>Màu</th>
-                                            <th>Mã Hex</th>
-                                            <th>Chiều dài</th>
+                                            <!-- <th>Màu</th>
+                                            <th>Mã hex</th>
                                             <th>Loại</th>
-                                            <th>Địa điểm</th>
-                                            <th>Ngày được thêm vào</th>
-                                            <th>Update</th>
+                                            <th>Update</th> -->
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        {% for product in products %}
+                                        {% for order in orders %}
                                         <tr>
-                                                <td>{{product.color}}</td>
-                                                <td style="background-color:#{{product.hexcolor}};"></td>
-                                                <td>{{product.hexcolor}}</td>
-                                                <td>{{product.length}}{{product.measurement_unit}}</td>
-                                                <td>{{product.type}}</td>
-                                                <td>{{product.location}}</td>
-                                                <td>{{product.product_date}}</td>
+                                                <td>{{order.order_id}}</td>
+                                                <td>{{order.customer_id}}</td>
+                                                <td>{{order.product_id}}</td>
                                                 <td>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                    <button type="button" class="btn btn-primary">Cập nhật</button>
+                                                    <button type="button" class="btn btn-danger">Delete</button>
+                                                    <button type="button" class="btn btn-primary">Update</button>
                                                 </td>
                                         </tr>
                                         {% endfor %}

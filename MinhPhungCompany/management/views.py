@@ -33,3 +33,10 @@ def productTable(request):
 def login(request):
     context = {}
     return render(request, 'management/login.html', context)
+
+def order(request):
+    orders = order.objects.all()
+    context = {
+        'orders' : orders,
+    }
+    return render(request, 'management/order.html', context)
