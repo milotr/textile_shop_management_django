@@ -1,3 +1,5 @@
+from calendar import c
+from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import *
@@ -35,8 +37,16 @@ def login(request):
     return render(request, 'management/login.html', context)
 
 def order(request):
-    orders = order.objects.all()
+    # customers = Customer.objects.get(id=pk)
+    # orders = customer.order_set.all()
+    # context = {
+    #     'customers' : customers,
+    #     'orders' : orders,
+    # }
+    orders = Order.objects.all()
+    products = product.order_set.all()
     context = {
         'orders' : orders,
+        'products' : products,
     }
     return render(request, 'management/order.html', context)

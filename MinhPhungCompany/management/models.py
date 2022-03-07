@@ -21,10 +21,7 @@ class Product(models.Model):
         ('m', 'meter'),
         ('y', 'yard'),
     ]
-<<<<<<< HEAD
-=======
 
->>>>>>> a9d29420ef2428f84562d2bafb9306779a29dd0e
     product_id = models.BigAutoField(primary_key=True)
     color = models.CharField(max_length=64)
     hexcolor = models.CharField(max_length=64)
@@ -33,8 +30,7 @@ class Product(models.Model):
     type = models.CharField(max_length=64)
     location = models.CharField(max_length=64, null=True)
     length = models.FloatField()
-    measurement_unit = models.CharField(
-        max_length=64, choices=measurement_unit_choices)
+    measurement_unit = models.CharField(max_length=64, choices=measurement_unit_choices)
     product_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
@@ -43,15 +39,9 @@ class Product(models.Model):
 
 class Order(models.Model):
     order_id = models.BigAutoField(primary_key=True)
-    customer_id = models.ForeignKey(
-        Customer, null=True, on_delete=models.SET_NULL)
-    product_id = models.ForeignKey(
-        Product, null=True, on_delete=models.SET_NULL)
+    customer_id = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
+    product_id = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
     order_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-<<<<<<< HEAD
-        return f'{self.order_id}-{self.customer_id}'
-=======
         return f'{self.order_id}-{self.customer_id}-{self.product_id}'
->>>>>>> a9d29420ef2428f84562d2bafb9306779a29dd0e
