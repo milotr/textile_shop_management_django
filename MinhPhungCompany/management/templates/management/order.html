@@ -43,14 +43,14 @@
                                     <thead>
                                         <tr>
                                             <th>Mã đơn hàng</th>
-                                            <th>Mã khách hàng</th>
+                                            <th>Khách hàng</th>
                                             <th>Mã hàng</th>
                                             <th>Màu</th>
                                             <th>Ngày được thêm vào</th>
-                                            <!-- <th>Màu</th>
+                                            <th>Màu</th>
                                             <th>Mã hex</th>
                                             <th>Loại</th>
-                                            <th>Update</th> -->
+                                            <th>Update</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -60,24 +60,19 @@
                                             <th>Mã hàng</th>
                                             <th>Màu</th>
                                             <th>Ngày được thêm vào</th>
-                                            <!-- <th>Màu</th>
+                                            <th>Màu</th>
                                             <th>Mã hex</th>
                                             <th>Loại</th>
-                                            <th>Update</th> -->
+                                            <th>Update</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         {% for order in orders %}
                                         <tr>
                                                 <td>{{order.order_id}}</td>
-                                                <td>{{order.customer_id}}</td>
-                                                <td>{{order.product_id}}</td>
-                                                <!-- <td style="background-color:#{{order.product.hexcolor}};"></td> -->
+                                                <td>{{order.customer}}</td>
+                                                <td>{{order.product}}</td>
                                                 <td>{{order.order_date}}</td>
-                                                <!-- <td>
-                                                    <button type="button" class="btn btn-danger">Delete</button>
-                                                    <button type="button" class="btn btn-primary">Update</button>
-                                                </td> -->
                                         </tr>
                                         {% endfor %}
                                     </tbody>

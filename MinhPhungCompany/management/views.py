@@ -7,8 +7,20 @@ from .models import *
 
 def home(request):
     customers = Customer.objects.all()
+    orders = Order.objects.all()
+    products = Product.objects.all()
+
+    total_customers = customers.count()
+    total_orders = orders.count()
+    total_products = products.count()
+
     context = {
         'customers' : customers,
+        'orders' : orders,
+        'products' : products,
+        'total_customers' : total_customers,
+        'total_orders' : total_orders,
+        'total_products' : total_products,
     }
     return render(request, 'management/index.html', context)
 
@@ -44,9 +56,9 @@ def order(request):
     #     'orders' : orders,
     # }
     orders = Order.objects.all()
-    products = product.order_set.all()
+    # products = product.order_set.all()
     context = {
         'orders' : orders,
-        'products' : products,
+        # 'products' : products,
     }
     return render(request, 'management/order.html', context)

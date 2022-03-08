@@ -39,8 +39,8 @@ class Product(models.Model):
 
 class Order(models.Model):
     order_id = models.BigAutoField(primary_key=True)
-    customer_id = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
-    product_id = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
+    customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
+    product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
     order_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
