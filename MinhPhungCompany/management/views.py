@@ -36,6 +36,15 @@ def customerTable(request):
     } 
     return render(request, 'management/customerTable.html', context)
 
+def customer (request, pk):
+    customer = Customer.objects.get(customer_id=pk)
+    orders = customer.order_set.all()
+    context = {
+        'customers' : customer,
+        'orders' : orders,
+    }
+    return render(request, 'management/customer.html', context)
+
 def productTable(request):
     products = Product.objects.all()
     # the string in the dictionary will be used in template
@@ -59,6 +68,7 @@ def order(request):
     # products = product.order_set.all()
     context = {
         'orders' : orders,
-        # 'products' : products,
+        # 'products' : products, 
     }
     return render(request, 'management/order.html', context)
+

@@ -51,6 +51,7 @@
                                             <th>Điện Thoại</th>
                                             <th>Chứng minh nhân dân</th>
                                             <th>Ngày được thêm vào</th>
+                                            <th>Chi tiết</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -61,6 +62,7 @@
                                             <th>Điện Thoại</th>
                                             <th>Chứng minh nhân dân</th>
                                             <th>Ngày được thêm vào</th>
+                                            <th>Chi tiết</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -72,6 +74,9 @@
                                                 <td>{{customer.phone}}</td>
                                                 <td>{{customer.socialnumber}}</td>
                                                 <td>{{customer.customer_date}}</td>
+                                                <td>
+                                                    <a href="{% url 'customer' customer.customer_id %}" class="btn btn-primary">Chi tiết khách hàng</a>
+                                                </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

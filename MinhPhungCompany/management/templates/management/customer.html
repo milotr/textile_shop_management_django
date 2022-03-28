@@ -24,10 +24,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Danh sách đơn hàng</h1>
+                        <h1 class="mt-4">Chi tiết khách hàng</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="home">Tổng quát</a></li>
-                            <li class="breadcrumb-item active">Danh sách đơn hàng</li>
+                            <li class="breadcrumb-item"><a href="{% url 'customerTable' %}">Tổng quát</a></li>
+                            <li class="breadcrumb-item active"></li>
                         </ol>
 
                         <div class="card mb-4">
@@ -43,16 +43,16 @@
                                     <thead>
                                         <tr>
                                             <th>Mã đơn hàng</th>
-                                            <th>Khách hàng</th>
-                                            <th>Mã hàng</th>
+                                            <th>Tên</th>
+                                            <th>Hàng</th>
                                             <th>Ngày được thêm vào</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
                                             <th>Mã đơn hàng</th>
-                                            <th>Mã khách hàng</th>
-                                            <th>Mã hàng</th>
+                                            <th>Tên</th>
+                                            <th>Hàng</th>
                                             <th>Ngày được thêm vào</th>
                                         </tr>
                                     </tfoot>
