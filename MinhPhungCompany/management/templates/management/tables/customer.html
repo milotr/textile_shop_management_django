@@ -24,10 +24,10 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Danh sách mẫu hàng</h1>
+                        <h1 class="mt-4">Chi tiết khách hàng</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="home">Tổng quát</a></li>
-                            <li class="breadcrumb-item active">Danh sách mầu hàng</li>
+                            <li class="breadcrumb-item"><a href="{% url 'customerTable' %}">Danh sách khách hàng</a></li>
+                            <li class="breadcrumb-item active"></li>
                         </ol>
 
                         <div class="card mb-4">
@@ -37,50 +37,32 @@
                             </div>
                             <div class="card-body">
                                 <div class="d-grid gap-2">
-                                    <button class="m-4 btn btn-primary" type="button">Thêm mẫu hàng</button>
+                                    <button class="m-4 btn btn-primary" type="button">Thêm đơn hàng</button>
                                 </div>
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Tên màu</th>
-                                            <th>Màu</th>
-                                            <th>Mã Hex</th>
-                                            <th>Chiều dài</th>
-                                            <th>Loại</th>
-                                            <th>Chiều dài</th>
-                                            <th>Địa điểm</th>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên</th>
+                                            <th>Hàng</th>
                                             <th>Ngày được thêm vào</th>
-                                            <th>Update</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Tên màu</th>
-                                            <th>Màu</th>
-                                            <th>Mã Hex</th>
-                                            <th>Chiều dài</th>
-                                            <th>Loại</th>
-                                            <th>Chiều dài</th>
-                                            <th>Địa điểm</th>
+                                            <th>Mã đơn hàng</th>
+                                            <th>Tên</th>
+                                            <th>Hàng</th>
                                             <th>Ngày được thêm vào</th>
-                                            <th>Update</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        {% for product in products %}
+                                        {% for order in orders %}
                                         <tr>
-                                                <td>{{product.color}}</td>
-                                                <td style="background-color:#{{product.hexcolor}};"></td>
-                                                <td>{{product.hexcolor}}</td>
-                                                <td>{{product.length}}{{product.measurement_unit}}</td>
-                                                <td>{{product.type}}</td>
-                                                <td>{{product.length}}{{product.measurement_unit}}</td>
-                                                <td>{{product.location}}</td>
-                                                <td>{{product.product_date}}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger">Xóa</button>
-                                                    <button type="button" class="btn btn-primary">Cập nhật</button>
-                                                </td>
+                                                <td>{{order.order_id}}</td>
+                                                <td>{{order.customer}}</td>
+                                                <td>{{order.product}}</td>
+                                                <td>{{order.order_date}}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

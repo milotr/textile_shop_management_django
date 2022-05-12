@@ -37,7 +37,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="d-grid gap-2">
-                                    <button class="m-4 btn btn-primary" type="button">Thêm đơn hàng</button>
+                                    <a href="{% url 'formOrder' %}" class="m-4 btn btn-primary" role="button">Thêm đơn hàng</a>
                                 </div>
                                 <table id="datatablesSimple">
                                     <thead>
@@ -46,6 +46,7 @@
                                             <th>Khách hàng</th>
                                             <th>Mã hàng</th>
                                             <th>Ngày được thêm vào</th>
+                                            <th>Chi tiết</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -54,6 +55,7 @@
                                             <th>Mã khách hàng</th>
                                             <th>Mã hàng</th>
                                             <th>Ngày được thêm vào</th>
+                                            <th>Chi tiết</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -63,6 +65,10 @@
                                                 <td>{{order.customer}}</td>
                                                 <td>{{order.product}}</td>
                                                 <td>{{order.order_date}}</td>
+                                                <td>
+                                                    <a href="{% url 'updateOrder' order.order_id %}" class="btn btn-primary">Cập nhật</a>
+                                                    <a href="{% url 'deleteOrder' order.order_id %}" class="btn btn-danger">Xóa</a>
+                                                </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>

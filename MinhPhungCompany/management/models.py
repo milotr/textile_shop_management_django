@@ -34,7 +34,7 @@ class Product(models.Model):
     product_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f'{self.product_id}-{self.color}-{self.hexcolor}'
+        return f'{self.color}-{self.hexcolor}'
 
 
 class Order(models.Model):
@@ -44,4 +44,4 @@ class Order(models.Model):
     order_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f'{self.order_id}-{self.customer_id}-{self.product_id}'
+        return f'{self.customer}-{self.product}'
