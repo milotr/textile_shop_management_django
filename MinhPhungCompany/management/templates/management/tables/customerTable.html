@@ -80,7 +80,7 @@
                                                 <td>
                                                     <a href="{% url 'customer' customer.customer_id %}" class="btn btn-primary">Đơn hàng của khách</a>
                                                     <a href="{% url 'updateCustomer' customer.customer_id %}" class="btn btn-primary">Cập nhật</a>
-                                                    <a href="{% url 'customer' customer.customer_id %}" class="btn btn-danger">Xóa</a>
+                                                    <a href="{% url 'deleteCustomer' customer.customer_id %}" class="btn btn-danger">Xóa</a>
                                                 </td>
                                         </tr>
                                         {% endfor %}
