@@ -35,9 +35,9 @@
                         {% csrf_token %}
                         {{form}}
                         <div class="col-12">
-                          <p>Bạn có muốn xóa {{product}} không?</p>
+                          <h3>Bạn có muốn xóa {{product}} không?</h3>
                           <a href="{% url 'home' %}" class="btn btn-primary">Hủy bỏ</a>
-                          <input type="submit" name="Confirm">
+                          <input type="submit" name="Confirm" class="btn btn-danger">
                         </div>
                       </form>
                    </div>

@@ -37,7 +37,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="d-grid gap-2">
-                                    <a href="{% url 'formProduct' %}" class="m-4 btn btn-primary" role="button">Thêm mẫu hàng</a>
+                                    <a href="{% url 'formProduct'%}" class="m-4 btn btn-primary" role="button">Thêm mẫu hàng</a>
                                 </div>
                                 <table id="datatablesSimple">
                                     <thead>
@@ -67,7 +67,7 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
-                                        {% for product in products %}
+                                        {% for product in product %}
                                         <tr>
                                                 <td>{{product.color}}</td>
                                                 <td style="background-color:#{{product.hexcolor}};"></td>
