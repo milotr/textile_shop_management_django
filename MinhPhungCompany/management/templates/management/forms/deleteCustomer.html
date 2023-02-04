@@ -1,55 +1,25 @@
-{% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Danh sách đơn hàng</title>
-        <!-- BOOTSTRAP CDN -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="{% static 'css/styles.css'%}" rel="stylesheet" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="sb-nav-fixed">
-        <!-- NAVBAR -->
-        {% include 'management/navbar.html' %}
-        <div id="layoutSidenav">
-            <!-- SIDENAVBAR -->
-            {% include 'management/sidenavbar.html' %}
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Xác nhận xóa?</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="{% url 'home'%}">Tổng quát</a></li>
-                            <li class="breadcrumb-item active">Xóa</li>
-                        </ol>
-                    </div>
-                   <div class="container mb-3 mt-3">
-                    <form class="row g-3" action="{% url 'deleteCustomer' customer.customer_id %}" method="POST">
-                        {% csrf_token %}
-                        {{form}}
-                        <div class="col-12">
-                          <h3>Bạn có muốn xóa {{customer}} không?</h3>
-                          <a href="{% url 'home' %}" class="btn btn-primary">Hủy bỏ</a>
-                          <input type="submit" name="Confirm" class="btn btn-danger">
-                        </div>
-                      </form>
-                   </div>
-                </main>
-                <!-- FOOTER -->
-            {% include 'management/footer.html' %}
-                </footer>
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="{% static 'js/scripts.js'%}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-        <script src="{% static 'js/datatables-simple-demo.js' %}"></script>
-    </body>
-</html>
+{% extends 'management/main.html' %} {%block content%}
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">Xác nhận xóa?</h1>
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item"><a href="{% url 'home'%}">Tổng quát</a></li>
+      <li class="breadcrumb-item active">Xóa</li>
+    </ol>
+  </div>
+  <div class="container mb-3 mt-3">
+    <form
+      class="row g-3"
+      action="{% url 'deleteCustomer' customer.customer_id %}"
+      method="POST"
+    >
+      {% csrf_token %} {{form}}
+      <div class="col-12">
+        <h3>Bạn có muốn xóa {{customer}} không?</h3>
+        <a href="{% url 'home' %}" class="btn btn-primary">Hủy bỏ</a>
+        <input type="submit" name="Confirm" class="btn btn-danger" />
+      </div>
+    </form>
+  </div>
+</main>
+{%endblock%}
