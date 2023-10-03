@@ -27,7 +27,7 @@ from .decorators import unauthenticated_user, allowed_users
 #                 return redirect("login")
 #         return render(request, "management/register.html", context)
 
-
+#Login views: allowed unauthenticated user to access
 @unauthenticated_user
 def login(request):
     if request.method == "POST":
@@ -43,13 +43,13 @@ def login(request):
     context = {}
     return render(request, "management/login.html", context)
 
-
+#Logout views: allowed logged in user to access
 @login_required(login_url="login")
 def logout(request):
     auth_logout(request)
     return redirect("login")
 
-
+#Home views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin", "employee"])
 def home(request):
@@ -71,14 +71,14 @@ def home(request):
     }
     return render(request, "management/index.html", context)
 
-
+#Chart views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def charts(request):
     context = {}
     return render(request, "management/charts.html", context)
 
-
+#Customer table views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def customerTable(request):
@@ -89,7 +89,7 @@ def customerTable(request):
     }
     return render(request, "management/tables/customerTable.html", context)
 
-
+#Customer adding views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def customer(request, pk):
@@ -101,7 +101,7 @@ def customer(request, pk):
     }
     return render(request, "management/tables/customer.html", context)
 
-
+#Product views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def productTable(request):
@@ -112,7 +112,7 @@ def productTable(request):
     }
     return render(request, "management/tables/productTable.html", context)
 
-
+#Order views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def order(request):
@@ -122,7 +122,7 @@ def order(request):
     }
     return render(request, "management/tables/orderTable.html", context)
 
-
+#Form adding Customer views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def formCustomer(request):
@@ -137,7 +137,7 @@ def formCustomer(request):
     }
     return render(request, "management/forms/formCustomer.html", context)
 
-
+#Form updating Customer views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def updateCustomer(request, pk):
@@ -155,7 +155,7 @@ def updateCustomer(request, pk):
     }
     return render(request, "management/forms/formCustomer.html", context)
 
-
+#Form deleting Customer views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def deleteCustomer(request, pk):
@@ -170,7 +170,7 @@ def deleteCustomer(request, pk):
     }
     return render(request, "management/forms/deleteCustomer.html", context)
 
-
+#Form Order Customer views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def formOrderCustomer(request, pk):
@@ -200,7 +200,7 @@ def formOrderCustomer(request, pk):
 #     }
 #     return render(request, 'management/forms/deleteOrder.html', context)
 
-
+#Form deleting Order Customer views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def deleteOrderCustomer(request, pk):
@@ -218,7 +218,7 @@ def deleteOrderCustomer(request, pk):
 
     return render(request, "management/forms/deleteOrderCustomer.html", context)
 
-
+#Form adding Order views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def formOrder(request):
@@ -234,7 +234,7 @@ def formOrder(request):
     }
     return render(request, "management/forms/formOrder.html", context)
 
-
+#Form updating Order views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def updateOrder(request, pk):
@@ -252,7 +252,7 @@ def updateOrder(request, pk):
     }
     return render(request, "management/forms/formOrder.html", context)
 
-
+#Form deleting Order views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def deleteOrder(request, pk):
@@ -267,7 +267,7 @@ def deleteOrder(request, pk):
     }
     return render(request, "management/forms/deleteOrder.html", context)
 
-
+#Form adding Product views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def formProduct(request):
@@ -284,7 +284,7 @@ def formProduct(request):
     }
     return render(request, "management/forms/formProduct.html", context)
 
-
+#Form updating Product views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def updateProduct(request, pk):
@@ -302,7 +302,7 @@ def updateProduct(request, pk):
     }
     return render(request, "management/forms/formProduct.html", context)
 
-
+#Form deleting Product views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
 def deleteProduct(request, pk):
