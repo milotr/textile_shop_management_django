@@ -9,7 +9,7 @@
           </div>
           Tổng quát
         </a>
-        <div class="sb-sidenav-menu-heading">Interface</div>
+        {% comment %} <div class="sb-sidenav-menu-heading">Interface</div>
         <div
           class="collapse"
           id="collapseLayouts"
@@ -86,12 +86,12 @@
               </div>
             </a>
           </nav>
-        </div>
+        </div> {% endcomment %}
         <div class="sb-sidenav-menu-heading">Chi tiết</div>
-        <a class="nav-link" href="{% url 'charts' %}">
+        {% comment %} <a class="nav-link" href="{% url 'charts' %}">
           <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
           Biểu đồ
-        </a>
+        </a> {% endcomment %}
         <a class="nav-link" href="{% url 'customerTable' %}">
           <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
           Danh sách khách hàng
