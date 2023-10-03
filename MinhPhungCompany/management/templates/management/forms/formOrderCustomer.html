@@ -1,0 +1,26 @@
+{% extends 'management/main.html' %} {%block content%}
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">Thêm đơn hàng</h1>
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item"><a href="{% url 'home'%}">Tổng quát</a></li>
+      <li class="breadcrumb-item active">Thêm đơn hàng</li>
+    </ol>
+  </div>
+  <div class="container mb-3 mt-3">
+    <form class="row g-3" action="" method="POST">
+      {% csrf_token %}
+      {{ formset.management_form }}
+      {% for form in formset %}
+        {{form}}
+        <hr>
+      {% endfor %}
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-primary">Thêm</button>
+        <button type="submit" class="btn btn-danger">Hủy</button>
+        <a href=""></a>
+      </div>
+    </form>
+  </div>
+</main>
+{%endblock%}

@@ -29,12 +29,11 @@ class Product(models.Model):
     measurement_unit = models.CharField(max_length = 64, choices = measurement_unit_choices)
     type = models.CharField(max_length=64)
     location = models.CharField(max_length=64, null=True)
-    length = models.FloatField()
     measurement_unit = models.CharField(max_length=64, choices=measurement_unit_choices)
     product_date = models.DateTimeField(auto_now_add=True, null=True)
 
     def __str__(self):
-        return f'{self.color}-{self.hexcolor}'
+        return f'{self.type} / {self.color} / {self.length}'
 
 
 class Order(models.Model):

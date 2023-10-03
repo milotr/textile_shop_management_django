@@ -116,9 +116,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 import os
+ROOT_PATH = os.path.dirname(__file__)
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(ROOT_PATH, 'static')
     # "C:/Users/Long Tran/Documents/GitHub/Management_Website/MinhPhungCompany/static"
 ]
 
