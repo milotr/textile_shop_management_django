@@ -22,6 +22,15 @@ class ProductForm(ModelForm):
         model = Product
         fields = "__all__"
 
+class TypeForm(ModelForm):
+    class Meta:
+        model = Type
+        fields = "__all__"
+
+class ColorForm(ModelForm):
+    class Meta:
+        model = Color
+        fields = "__all__"
 
 class CreateUserForm(UserCreationForm):
     class Meta:

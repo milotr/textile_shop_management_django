@@ -1,0 +1,25 @@
+{% extends 'management/main.html' %} {%block content%}
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">Xác nhận xóa?</h1>
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item"><a href="{% url 'home'%}">Tổng quát</a></li>
+      <li class="breadcrumb-item active">Xóa</li>
+    </ol>
+  </div>
+  <div class="container mb-3 mt-3">
+    <form
+      class="row g-3"
+      action="{% url 'deleteType' type.type_id %}"
+      method="POST"
+    >
+      {% csrf_token %} {{form}}
+      <div class="col-12">
+        <h3>Bạn có muốn xóa {{customer}} không?</h3>
+        <a href="{% url 'home' %}" class="btn btn-primary">Hủy bỏ</a>
+        <input type="submit" name="Confirm" class="btn btn-danger" />
+      </div>
+    </form>
+  </div>
+</main>
+{%endblock%}

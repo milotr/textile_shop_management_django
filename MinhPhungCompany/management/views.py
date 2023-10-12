@@ -134,6 +134,38 @@ def productTable(request):
     return render(request, "management/tables/productTable.html", context)
 
 # -------------------------------------------------------------------------------------------
+# TYPE TABLE
+# -------------------------------------------------------------------------------------------
+
+#Type views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def typeTable(request, pk):
+    product = Product.objects.get(product_id=pk)
+    type = product.type_set.all()
+    # the string in the dictionary will be used in template
+    context = {
+        "product": product,
+        "type": type,
+    }
+    return render(request, "management/tables/typeTable.html", context)
+
+# -------------------------------------------------------------------------------------------
+# COLOR TABLE
+# -------------------------------------------------------------------------------------------
+
+#Product views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def colorTable(request):
+    product = Product.objects.all()
+    # the string in the dictionary will be used in template
+    context = {
+        "product": product,
+    }
+    return render(request, "management/tables/colorTable.html", context)
+
+# -------------------------------------------------------------------------------------------
 # ORDER TABLE
 # -------------------------------------------------------------------------------------------
 
@@ -252,6 +284,112 @@ def deleteProduct(request, pk):
         "product": product,
     }
     return render(request, "management/forms/deleteProduct.html", context)
+# -------------------------------------------------------------------------------------------
+# FORM TYPE
+# -------------------------------------------------------------------------------------------
+
+#Form adding Type views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def formType(request):
+    form = TypeForm()
+
+    if request.method == "POST":
+        form = TypeForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("typeTable")
+
+    context = {
+        "form": form,
+    }
+    return render(request, "management/forms/formType.html", context)
+
+#Form updating Type views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def updateType(request, pk):
+    type = Type.objects.get(type_id=pk)
+    form = TypeForm(instance=type)
+
+    if request.method == "POST":
+        form = TypeForm(request.POST, instance=type)
+        if form.is_valid():
+            form.save(),
+            return redirect("typeTable")
+
+    context = {
+        "form": form,
+    }
+    return render(request, "management/forms/formType.html", context)
+
+#Form deleting Type views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def deleteType(request, pk):
+    type = Type.objects.get(type_id=pk)
+
+    if request.method == "POST":
+        type.delete()
+        return redirect("typeTable")
+
+    context = {
+        "type": type,
+    }
+    return render(request, "management/forms/deleteType.html", context)
+# -------------------------------------------------------------------------------------------
+# COLOR TYPE
+# -------------------------------------------------------------------------------------------
+
+#Form adding Color views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def formColor(request):
+    form = ColorForm()
+
+    if request.method == "POST":
+        form = ColorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("colorTable")
+
+    context = {
+        "form": form,
+    }
+    return render(request, "management/forms/formColor.html", context)
+
+#Form updating Color views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def updateColor(request, pk):
+    color = Color.objects.get(color_id=pk)
+    form = ColorForm(instance=type)
+
+    if request.method == "POST":
+        form = ColorForm(request.POST, instance=type)
+        if form.is_valid():
+            form.save(),
+            return redirect("colorTable")
+
+    context = {
+        "form": form,
+    }
+    return render(request, "management/forms/formColor.html", context)
+
+#Form deleting Color views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def deleteColor(request, pk):
+    color = Color.objects.get(color_id=pk)
+
+    if request.method == "POST":
+        color.delete()
+        return redirect("colorTable")
+
+    context = {
+        "color": color,
+    }
+    return render(request, "management/forms/deleteColor.html", context)
 
 # -------------------------------------------------------------------------------------------
 # FORM ORDER

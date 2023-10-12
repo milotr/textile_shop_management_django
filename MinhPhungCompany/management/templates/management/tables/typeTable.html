@@ -1,0 +1,32 @@
+{% extends 'management/main.html' %} {%block content%}
+<main>
+  <div class="container-fluid px-4">
+    <h1 class="mt-4">Danh sách màu</h1>
+    <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item"><a href="{% url 'home'%}">Tổng quát</a></li>
+      <li class="breadcrumb-item active">Danh sách màu</li>
+    </ol>
+    <div class="card mb-4">
+      <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Danh sách màu
+      </div>
+      <div class="card-body">
+        <div class="d-grid gap-2">
+          <a
+            href=""
+            class="m-4 btn btn-primary"
+            role="button"
+            >Thêm màu</a
+          >
+        </div>
+        <ul class="list-group">
+          {% for type in type %}
+          <li class="list-group-item">{{type.color}}</li>
+          {% endfor %}
+        </ul> 
+      </div>
+    </div>
+  </div>
+</main>
+{%endblock%}
