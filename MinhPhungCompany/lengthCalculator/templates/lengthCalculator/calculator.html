@@ -1,0 +1,17 @@
+{% extends 'management/main.html' %} {%block content%}
+<main>
+    <div class="container-fluid px-4">
+        <h1 class="mt-4">Máy tính chiều dài cây vải</h1>
+        <ol class="breadcrumb mb-4">
+          <li class="breadcrumb-item active">Cửa hàng vải Phụng Lan</li>
+        </ol>
+
+      <form action="result">
+        {% csrf_token %}
+        {{form}}
+        <div class="input-group flex-nowrap">
+            <button type="submit" class="btn btn-primary">Kết quả</button> 
+        </div>   
+    </form>
+</main>
+{%endblock%}

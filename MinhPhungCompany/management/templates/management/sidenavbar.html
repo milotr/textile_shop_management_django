@@ -3,11 +3,17 @@
     <div class="sb-sidenav-menu">
       <div class="nav">
         <div class="sb-sidenav-menu-heading">Chung</div>
-        <a class="nav-link" href="home">
+        <a class="nav-link" href="{% url "home"%}">
           <div class="sb-nav-link-icon">
             <i class="fas fa-tachometer-alt"></i>
           </div>
           Tổng quát
+        </a>
+        <a class="nav-link" href="{% url "lengthCalculator"%}">
+          <div class="sb-nav-link-icon">
+            <i class="fas fa-tachometer-alt"></i>
+          </div>
+          Tính chiều dài cây vải
         </a>
         {% comment %} <div class="sb-sidenav-menu-heading">Interface</div>
         <div
