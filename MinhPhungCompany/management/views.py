@@ -64,19 +64,19 @@ def logout(request):
 def home(request):
     customer = Customer.objects.all()
     order = Order.objects.all()
-    product = Product.objects.all()
+    roll = Roll.objects.all()
 
     total_customer = customer.count()
     total_order = order.count()
-    total_product = product.count()
+    total_roll = roll.count()
 
     context = {
         "customer": customer,
         "order": order,
-        "product": product,
+        "roll": roll,
         "total_customer": total_customer,
         "total_order": total_order,
-        "total_product": total_product,
+        "total_roll": total_roll,
     }
     return render(request, "management/index.html", context)
 
@@ -119,33 +119,16 @@ def customer(request, pk):
     return render(request, "management/tables/customer.html", context)
 
 # -------------------------------------------------------------------------------------------
-# PRODUCT TABLE
-# -------------------------------------------------------------------------------------------
-
-#Product views: allowed logged in user and allowed user to access
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
-def productTable(request):
-    product = Product.objects.all()
-    # the string in the dictionary will be used in template
-    context = {
-        "product": product,
-    }
-    return render(request, "management/tables/productTable.html", context)
-
-# -------------------------------------------------------------------------------------------
 # TYPE TABLE
 # -------------------------------------------------------------------------------------------
 
 #Type views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
-def typeTable(request, pk):
-    product = Product.objects.get(product_id=pk)
-    type = product.type_set.all()
+def typeTable(request):
+    type = Type.objects.all()
     # the string in the dictionary will be used in template
     context = {
-        "product": product,
         "type": type,
     }
     return render(request, "management/tables/typeTable.html", context)
@@ -154,16 +137,33 @@ def typeTable(request, pk):
 # COLOR TABLE
 # -------------------------------------------------------------------------------------------
 
-#Product views: allowed logged in user and allowed user to access
+#Color views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
-def colorTable(request):
-    product = Product.objects.all()
+def colorTable(request, pk):
+    type = Type.objects.get(type_id=pk)
+    color = type.color_set.all()
     # the string in the dictionary will be used in template
     context = {
-        "product": product,
+        "type": type,
+        "color": color,
     }
     return render(request, "management/tables/colorTable.html", context)
+
+# -------------------------------------------------------------------------------------------
+# ROLL TABLE
+# -------------------------------------------------------------------------------------------
+
+#Roll views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def rollTable(request):
+    roll = Roll.objects.all()
+    # the string in the dictionary will be used in template
+    context = {
+        "roll": roll,
+    }
+    return render(request, "management/tables/rollTable.html", context)
 
 
 # -------------------------------------------------------------------------------------------

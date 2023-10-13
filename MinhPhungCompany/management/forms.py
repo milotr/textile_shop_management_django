@@ -17,9 +17,9 @@ class CustomerForm(ModelForm):
         fields = "__all__"
 
 
-class ProductForm(ModelForm):
+class RollForm(ModelForm):
     class Meta:
-        model = Product
+        model = Roll
         fields = "__all__"
 
 class TypeForm(ModelForm):

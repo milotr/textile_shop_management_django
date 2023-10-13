@@ -12,23 +12,35 @@ class Customer(models.Model):
         return f'{self.name}'
 
 
-class Product(models.Model):
-    product_id = models.BigAutoField(primary_key=True)
-    type = models.CharField(max_length=64)
+# class Product(models.Model):
+#     product_id = models.BigAutoField(primary_key=True)
+#     typeOfProduct = models.CharField(max_length=64)
 
-    def __str__(self):
-        return f'{self.type}'
-
+#     def __str__(self):
+#         return f'{self.typeOfProduct}'
 class Type(models.Model):
     type_id = models.BigAutoField(primary_key=True)
-    product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL, related_name='+')
-    color = models.CharField(max_length=64)
-    def __str__(self):
-        return f'{self.color}'
+    typeOfProduct = models.CharField(max_length=64)
 
-class Color(models.Model):
+    def __str__(self):
+        return f'{self.typeOfProduct}'
+
+# class Type(models.Model):
+#     type_id = models.BigAutoField(primary_key=True)
+#     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
+#     colorOfType = models.CharField(max_length=64)
+#     def __str__(self):
+#         return f'{self.color}'
+
+class Color (models.Model):
     color_id = models.BigAutoField(primary_key=True)
-    colorKey = models.ForeignKey(Type, null=True, on_delete=models.SET_NULL, related_name='+')
+    typeKey = models.ForeignKey(Type, null=True, on_delete=models.SET_NULL)
+    colorOfType = models.CharField(max_length=64)
+    def __str__(self):
+        return f'{self.colorOfType}'
+class Roll(models.Model):
+    roll_id = models.BigAutoField(primary_key=True)
+    colorKey = models.ForeignKey(Color, null=True, on_delete=models.SET_NULL)
     length = models.FloatField()
     measurement_unit_choices = [
         ('m', 'meter'),
@@ -36,7 +48,7 @@ class Color(models.Model):
     ]
     measurement_unit = models.CharField(max_length = 64, choices = measurement_unit_choices)
     location = models.CharField(max_length=64, null=True)
-    product_date = models.DateTimeField(auto_now_add=True, null=True)
+    color_date = models.DateTimeField(auto_now_add=True, null=True)
     sold = models.BooleanField()
     def __str__(self):
         return f'{self.length}{self.measurement_unit}'
@@ -45,12 +57,12 @@ class Color(models.Model):
 class Order(models.Model):
     order_id = models.BigAutoField(primary_key=True)
     customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
-    product = models.ForeignKey(Color, null=True, on_delete=models.SET_NULL)
+    roll = models.ForeignKey(Roll, null=True, on_delete=models.SET_NULL)
     order_date = models.DateTimeField(auto_now_add=True, null=True)
     delivery_choices = [
         ('Đã giao', 'Đã giao'),
         ('Chưa giao', 'Chưa giao'),
-        ('Đang giao', 'Đang giao').
+        ('Đang giao', 'Đang giao'),
     ]
     delivery = models.CharField(max_length=64, choices=delivery_choices)
     deliverer = models.CharField(max_length=64)

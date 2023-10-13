@@ -92,20 +92,18 @@
         <table id="datatablesSimple">
           <thead>
             <tr>
-              <th>Họ</th>
-              <th>Đệm</th>
               <th>Tên</th>
               <th>Điện Thoại</th>
+              <th>Địa chỉ</th>            
               <th>Chứng minh nhân dân</th>
               <th>Ngày được thêm vào</th>
             </tr>
           </thead>
           <tfoot>
             <tr>
-              <th>Họ</th>
-              <th>Đệm</th>
               <th>Tên</th>
               <th>Điện Thoại</th>
+              <th>Địa chỉ</th>                          
               <th>Chứng minh nhân dân</th>
               <th>Ngày được thêm vào</th>
             </tr>
@@ -113,10 +111,9 @@
           <tbody>
             {% for customer in customer %}
             <tr>
-              <td>{{customer.lastname}}</td>
-              <td>{{customer.middlename}}</td>
-              <td>{{customer.firstname}}</td>
+              <td>{{customer.name}}</td>
               <td>{{customer.phone}}</td>
+              <td>{{customer.address}}</td>
               <td>{{customer.socialnumber}}</td>
               <td>{{customer.customer_date}}</td>
             </tr>
