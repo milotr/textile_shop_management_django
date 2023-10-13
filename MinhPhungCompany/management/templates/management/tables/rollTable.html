@@ -47,14 +47,13 @@
           <tbody>
             {% for color in color %}
             <tr>
-              <td>{{color.color_id}}</td>
+              {% comment %} <td>{{color.color_id}}</td> {% endcomment %}
               {% comment %} <td style="background-color:#{{product.hexcolor}};"></td> {% endcomment %}
-              <td>{{product.hexcolor}}</td>
-              <td>{{product.length}}{{product.measurement_unit}}</td>
-              <td>{{product.type}}</td>
-              <td>{{product.length}}{{product.measurement_unit}}</td>
-              <td>{{product.location}}</td>
-              <td>{{product.product_date}}</td>
+              <td>{{color.hexcolor}}</td>
+              <td>{{color.length}}{{color.measurement_unit}}</td>
+              <td>{{color.location}}</td>
+              <td>{{color.color_date}}</td>
+              <td>{{color.sold}}</td>
               <td>
                 <a
                   href="{% url 'updateProduct' product.product_id %}"
