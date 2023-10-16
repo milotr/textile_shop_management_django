@@ -11,26 +11,12 @@ class Customer(models.Model):
     def __str__(self):
         return f'{self.name}'
 
-
-# class Product(models.Model):
-#     product_id = models.BigAutoField(primary_key=True)
-#     typeOfProduct = models.CharField(max_length=64)
-
-#     def __str__(self):
-#         return f'{self.typeOfProduct}'
 class Type(models.Model):
     type_id = models.BigAutoField(primary_key=True)
     typeOfProduct = models.CharField(max_length=64)
 
     def __str__(self):
         return f'{self.typeOfProduct}'
-
-# class Type(models.Model):
-#     type_id = models.BigAutoField(primary_key=True)
-#     product = models.ForeignKey(Product, null=True, on_delete=models.SET_NULL)
-#     colorOfType = models.CharField(max_length=64)
-#     def __str__(self):
-#         return f'{self.color}'
 
 class Color (models.Model):
     color_id = models.BigAutoField(primary_key=True)
@@ -48,7 +34,7 @@ class Roll(models.Model):
     ]
     measurement_unit = models.CharField(max_length = 64, choices = measurement_unit_choices)
     location = models.CharField(max_length=64, null=True)
-    color_date = models.DateTimeField(auto_now_add=True, null=True)
+    roll_date = models.DateTimeField(auto_now_add=True, null=True)
     sold = models.BooleanField()
     def __str__(self):
         return f'{self.length}{self.measurement_unit}'

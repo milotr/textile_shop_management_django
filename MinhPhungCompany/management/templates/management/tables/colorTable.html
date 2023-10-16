@@ -9,7 +9,7 @@
     <div class="d-grid gap-2">
       <a
         href=""
-        class="m-4 btn btn-primary"
+        class="btn btn-primary"
         role="button"
         >Thêm màu</a
       >
@@ -19,13 +19,11 @@
         <i class="fas fa-table me-1"></i>
         Danh sách màu
       </div>
-      <div class="card-body">
         <ul class="list-group">
           {% for color in color %}
-          <li class="list-group-item">{{color.colorOfType}}</li>
-          {% endfor %}
+          <li class="list-group-item"><a href="{% url 'rollTable' color.color_id %}">{{color.colorOfType}}</li>
+          {% endfor %} 
         </ul> 
-      </div>
     </div>
   </div>
 </main>

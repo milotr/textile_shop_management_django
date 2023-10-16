@@ -157,10 +157,12 @@ def colorTable(request, pk):
 #Roll views: allowed logged in user and allowed user to access
 @login_required(login_url="login")
 @allowed_users(allowed_roles=["admin"])
-def rollTable(request):
-    roll = Roll.objects.all()
+def rollTable(request, pk):
+    color = Color.objects.get(color_id=pk)
+    roll = color.roll_set.all()
     # the string in the dictionary will be used in template
     context = {
+        "color": color,
         "roll": roll,
     }
     return render(request, "management/tables/rollTable.html", context)
