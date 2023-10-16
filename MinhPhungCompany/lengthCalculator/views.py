@@ -17,8 +17,8 @@ class length_calculator(View):
         form = LengthCalculatorForm(request.POST)
 
         if form.is_valid():
-            length = (1000/((form.cleaned_data['weight_10cm'] * 100)*form.cleaned_data['height']))*form.cleaned_data['weight']   
+            chiều_dài = (1000/((form.cleaned_data['cân_nặng_mẫu_vải'] * 100)*form.cleaned_data['chiều_cao']))*form.cleaned_data['cân_nặng_cả_cây']   
         context = {
-            "length" : length
+            "chiều_dài" : chiều_dài
         }
         return render(request, "lengthCalculator/results.html", context)
