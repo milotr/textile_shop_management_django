@@ -6,34 +6,27 @@
       <li class="breadcrumb-item"><a href="{% url 'home'%}">Tổng quát</a></li>
       <li class="breadcrumb-item active">Danh sách khách hàng</li>
     </ol>
-    <!-- <div class="card mb-4">
-                            <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div>
-                        </div> -->
+    <div class="d-grid gap-2">
+      <a
+        href="{% url 'formCustomer' %}"
+        class="btn btn-primary"
+        role="button"
+        >Thêm khách hàng</a
+      >
+    </div>
     <div class="card mb-4">
       <div class="card-header">
         <i class="fas fa-table me-1"></i>
         Danh sách khách hàng
       </div>
       <div class="card-body">
-        <div class="d-grid gap-2">
-          <a
-            href="{% url 'formCustomer' %}"
-            class="m-4 btn btn-primary"
-            role="button"
-            >Thêm khách hàng</a
-          >
-        </div>
         <table id="datatablesSimple">
           <thead>
             <tr>
               <th>Tên</th>
               <th>Điện Thoại</th>
-              <th>Chứng minh nhân dân</th>
-              <th>Ngày được thêm vào</th>
+              <th>CCCD</th>
+              <th>Ngày</th>
               <th>Chi tiết</th>
             </tr>
           </thead>
@@ -41,8 +34,8 @@
             <tr>
               <th>Tên</th>
               <th>Điện Thoại</th>
-              <th>Chứng minh nhân dân</th>
-              <th>Ngày được thêm vào</th>
+              <th>CCCD</th>
+              <th>Ngày</th>
               <th>Chi tiết</th>
             </tr>
           </tfoot>
@@ -56,17 +49,17 @@
               <td>
                 <a
                   href="{% url 'customer' customer.customer_id %}"
-                  class="btn btn-primary"
-                  >Đơn hàng của khách</a
+                  class="btn btn-outline-primary"
+                  >Đơn hàng</a
                 >
                 <a
                   href="{% url 'updateCustomer' customer.customer_id %}"
-                  class="btn btn-primary"
+                  class="btn btn-outline-primary"
                   >Cập nhật</a
                 >
                 <a
                   href="{% url 'deleteCustomer' customer.customer_id %}"
-                  class="btn btn-danger"
+                  class="btn btn-outline-danger"
                   >Xóa</a
                 >
               </td>

@@ -23,7 +23,7 @@ class Color (models.Model):
     typeKey = models.ForeignKey(Type, null=True, on_delete=models.SET_NULL)
     colorOfType = models.CharField(max_length=64)
     def __str__(self):
-        return f'{self.colorOfType}'
+        return f'{self.typeKey} - {self.colorOfType}'
 class Roll(models.Model):
     roll_id = models.BigAutoField(primary_key=True)
     colorKey = models.ForeignKey(Color, null=True, on_delete=models.SET_NULL)

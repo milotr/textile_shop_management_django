@@ -127,9 +127,12 @@ def customer(request, pk):
 @allowed_users(allowed_roles=["admin"])
 def typeTable(request):
     type = Type.objects.all()
+    total_type = type.count()
+
     # the string in the dictionary will be used in template
     context = {
         "type": type,
+        "total_type": total_type,
     }
     return render(request, "management/tables/typeTable.html", context)
 
@@ -143,6 +146,7 @@ def typeTable(request):
 def colorTable(request, pk):
     type = Type.objects.get(type_id=pk)
     color = type.color_set.all()
+
     # the string in the dictionary will be used in template
     context = {
         "type": type,
@@ -235,59 +239,6 @@ def deleteCustomer(request, pk):
     return render(request, "management/forms/deleteCustomer.html", context)
 
 # -------------------------------------------------------------------------------------------
-# FORM PRODUCT
-# -------------------------------------------------------------------------------------------
-
-#Form adding Product views: allowed logged in user and allowed user to access
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
-def formProduct(request):
-    form = ProductForm()
-
-    if request.method == "POST":
-        form = ProductForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("productTable")
-
-    context = {
-        "form": form,
-    }
-    return render(request, "management/forms/formProduct.html", context)
-
-#Form updating Product views: allowed logged in user and allowed user to access
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
-def updateProduct(request, pk):
-    product = Product.objects.get(product_id=pk)
-    form = ProductForm(instance=product)
-
-    if request.method == "POST":
-        form = ProductForm(request.POST, instance=product)
-        if form.is_valid():
-            form.save(),
-            return redirect("productTable")
-
-    context = {
-        "form": form,
-    }
-    return render(request, "management/forms/formProduct.html", context)
-
-#Form deleting Product views: allowed logged in user and allowed user to access
-@login_required(login_url="login")
-@allowed_users(allowed_roles=["admin"])
-def deleteProduct(request, pk):
-    product = Product.objects.get(product_id=pk)
-
-    if request.method == "POST":
-        product.delete()
-        return redirect("productTable")
-
-    context = {
-        "product": product,
-    }
-    return render(request, "management/forms/deleteProduct.html", context)
-# -------------------------------------------------------------------------------------------
 # FORM TYPE
 # -------------------------------------------------------------------------------------------
 
@@ -341,7 +292,7 @@ def deleteType(request, pk):
     }
     return render(request, "management/forms/deleteType.html", context)
 # -------------------------------------------------------------------------------------------
-# COLOR TYPE
+# FORM COLOR
 # -------------------------------------------------------------------------------------------
 
 #Form adding Color views: allowed logged in user and allowed user to access
@@ -393,6 +344,59 @@ def deleteColor(request, pk):
         "color": color,
     }
     return render(request, "management/forms/deleteColor.html", context)
+# -------------------------------------------------------------------------------------------
+# FORM ROLL
+# -------------------------------------------------------------------------------------------
+
+#Form adding Roll views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def formRoll(request):
+    form = RollForm()
+
+    if request.method == "POST":
+        form = RollForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("rollTable")
+
+    context = {
+        "form": form,
+    }
+    return render(request, "management/forms/formRoll.html", context)
+
+#Form updating Roll views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def updateRoll(request, pk):
+    roll = Roll.objects.get(roll_id=pk)
+    form = RollForm(instance=roll)
+
+    if request.method == "POST":
+        form = RollForm(request.POST, instance=roll)
+        if form.is_valid():
+            form.save(),
+            return redirect("rollTable")
+
+    context = {
+        "form": form,
+    }
+    return render(request, "management/forms/formRoll.html", context)
+
+#Form deleting Roll views: allowed logged in user and allowed user to access
+@login_required(login_url="login")
+@allowed_users(allowed_roles=["admin"])
+def deleteRoll(request, pk):
+    roll = Roll.objects.get(roll_id=pk)
+
+    if request.method == "POST":
+        roll.delete()
+        return redirect("rollTable")
+
+    context = {
+        "roll": roll,
+    }
+    return render(request, "management/forms/deleteRoll.html", context)
 
 # -------------------------------------------------------------------------------------------
 # FORM ORDER

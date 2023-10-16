@@ -1,28 +1,42 @@
 {% extends 'management/main.html' %} {%block content%}
 <main>
   <div class="container-fluid px-4">
-    <h1 class="mt-4">Danh sách mẫu hàng</h1>
+    <h1 class="mt-4">Danh sách loại hàng</h1>
     <ol class="breadcrumb mb-4">
-      <li class="breadcrumb-item"><a href="home">Tổng quát</a></li>
-      <li class="breadcrumb-item active">Danh sách mầu hàng</li>
+      <li class="breadcrumb-item"><a href="{% url 'home'%}">Tổng quát</a></li>
+      <li class="breadcrumb-item active">Danh sách loại hàng</li>
     </ol>
     <div class="card-body">   
       <div class="d-grid gap-2">
         <a
-          href="{% url 'formProduct'%}"
+          href="{% url 'formType'%}"
           class="btn btn-primary"
           role="button"
-          >Thêm mẫu hàng</a
+          >Thêm loại hàng</a
         >
       </div>
     <div class="card mb-4">
       <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Danh sách mẫu hàng
+        Danh sách loại hàng - {{total_type}} loại
       </div>
         <ul class="list-group">
           {% for type in type %}
-          <li class="list-group-item"><a href="{% url 'colorTable' type.type_id %}">{{type.typeOfProduct}}</li>
+          <li class="list-group-item">         
+            <div class="container">
+            <a href="{% url 'colorTable' type.type_id %}">{{type.typeOfProduct}}
+            <a
+            href="{% url 'updateType' type.type_id %}"
+            class="ms-3 btn btn-outline-primary float-end"
+            >Cập nhật</a
+          >
+          <a
+            href="{% url 'deleteType' type.type_id %}"
+            class="ms-3 btn btn-outline-danger float-end"
+            >Xóa</a
+          >
+          </div>
+          </li>
           {% endfor %}
         </ul> 
       </div>

@@ -10,7 +10,7 @@
   <div class="container mb-3 mt-3">
     <form
       class="row g-3"
-      action="{% url 'deleteProduct' product.product_id %}"
+      action="{% url 'deleteRoll' roll.roll_id %}"
       method="POST"
     >
       {% csrf_token %} {{form}}

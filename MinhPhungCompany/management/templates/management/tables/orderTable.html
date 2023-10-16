@@ -6,21 +6,20 @@
       <li class="breadcrumb-item"><a href="home">Tổng quát</a></li>
       <li class="breadcrumb-item active">Danh sách đơn hàng</li>
     </ol>
-
+    <div class="card-body">
+      <div class="d-grid gap-2">
+        <a
+          href="{% url 'formOrder'%}"
+          class="btn btn-primary"
+          role="button"
+          >Thêm đơn hàng</a
+        >
+      </div>
     <div class="card mb-4">
       <div class="card-header">
         <i class="fas fa-table me-1"></i>
         Danh sách mẫu hàng
       </div>
-      <div class="card-body">
-        <div class="d-grid gap-2">
-          <a
-            href="{% url 'formOrder'%}"
-            class="m-4 btn btn-primary"
-            role="button"
-            >Thêm đơn hàng</a
-          >
-        </div>
         <table id="datatablesSimple">
           <thead>
             <tr>

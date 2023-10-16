@@ -8,7 +8,7 @@
     </ol> 
     <div class="d-grid gap-2">
       <a
-        href=""
+        href="{%url 'formColor'%}"
         class="btn btn-primary"
         role="button"
         >Thêm màu</a
@@ -17,13 +17,29 @@
     <div class="card mb-4">
       <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Danh sách màu
+        Danh sách màu - {{total_color}} màu
       </div>
         <ul class="list-group">
+        <ul class="list-group">
           {% for color in color %}
-          <li class="list-group-item"><a href="{% url 'rollTable' color.color_id %}">{{color.colorOfType}}</li>
-          {% endfor %} 
+          <li class="list-group-item">         
+            <div class="container">
+            <a href="{% url 'rollTable' color.color_id %}">{{color.colorOfType}}
+            <a
+            href="{% url 'updateColor' color.color_id %}"
+            class="ms-3 btn btn-outline-primary float-end"
+            >Cập nhật</a
+          >
+          <a
+            href="{% url 'deleteColor' color.color_id %}"
+            class="ms-3 btn btn-outline-danger float-end"
+            >Xóa</a
+          >
+          </div>
+          </li>
+          {% endfor %}
         </ul> 
+
     </div>
   </div>
 </main>

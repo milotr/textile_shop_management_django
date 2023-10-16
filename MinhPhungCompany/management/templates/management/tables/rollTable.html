@@ -8,7 +8,7 @@
     </ol>
     <div class="d-grid gap-2">
       <a
-        href="{% url 'formProduct'%}"
+        href="{% url 'formRoll'%}"
         class="btn btn-primary"
         role="button"
         >Thêm cây vải</a
@@ -48,18 +48,18 @@
               <td>{{roll.location}}</td>
               <td>{{roll.roll_date}}</td>
               <td>{{roll.sold}}</td>
-              {% comment %} <td>
+              <td>
                 <a
-                  href="{% url 'updateProduct' product.product_id %}"
+                  href="{% url 'updateRoll' roll.roll_id %}"
                   class="btn btn-primary"
                   >Cập nhật</a
                 >
                 <a
-                  href="{% url 'deleteProduct' product.product_id %}"
+                  href="{% url 'deleteRoll' roll.roll_id %}"
                   class="btn btn-danger"
                   >Xóa</a
                 >
-              </td> {% endcomment %}
+              </td> 
             </tr>
             {% endfor %}
           </tbody>
